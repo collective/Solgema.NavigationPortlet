@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<object name="portal_javascripts" meta_type="JavaScripts Registry">
+ <javascript cacheable="True" compression="none" cookable="True"
+    enabled="True" expression=""
+    id="jquery.jscrollpane.min.js" inline="False"/>
+ <javascript cacheable="True" compression="safe-encode" cookable="True"
+    enabled="True" expression=""
+    id="jquery.mousewheel.js" inline="False"/>
+ <javascript cacheable="True" compression="safe-encode" cookable="True"
+    enabled="True" expression=""
+    id="mwheelIntent.js" inline="False"/>
+ <javascript cacheable="True" compression="safe-encode" cookable="True"
+    enabled="True" expression=""
+    id="solgemanavigationportlet.js" inline="False"/>
+</object>

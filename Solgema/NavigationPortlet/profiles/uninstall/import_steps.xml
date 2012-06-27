@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<import-steps>
+ <import-step id="solgemanavigationportletuninstall"
+              version="20120608-01"
+              handler="Solgema.NavigationPortlet.setuphandlers.uninstallSolgemaNavigationPortlet"
+              title="Solgema Navigation Portlet uninstall">
+ </import-step>
+</import-steps>

@@ -1,0 +1,17 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
+    i18n_domain="Solgema.NavigationPortlet">
+
+  <five:registerPackage package="." initialize=".initialize" />
+  <cmf:registerDirectory name="skins" directory="skins" recursive="True" />
+  <include package="plone.app.portlets" />
+  <include file="profiles.zcml"/>
+  <include file="vocabularies.zcml"/>
+  <include package=".portlets" />
+  <i18n:registerTranslations directory="locales" />
+
+</configure>

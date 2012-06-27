@@ -1,0 +1,44 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone">
+
+    <plone:portlet
+        name="portlet.SolgemaNavigationPortlet"
+        interface=".navigation.ISolgemaNavigationPortlet"
+        assignment=".navigation.Assignment"
+        renderer=".navigation.Renderer"
+        addview=".navigation.AddForm"
+        editview=".navigation.EditForm"
+        />
+
+    <adapter factory=".navigation.QueryBuilder" />
+
+    <adapter factory=".navigation.ManagerQueryBuilder" />
+
+    <adapter factory=".navigation.NavtreeStrategy" />
+
+    <adapter factory=".navigation.NavtreeItemStrategy"
+        provides=".interfaces.INavtreeItemStrategy" />
+
+    <adapter factory=".navigation.ManagerNavtreeStrategy"
+        provides=".interfaces.ISManagerNavtreeStrategy" />
+
+    <adapter factory=".navigation.ManagerContentNavtreeStrategy"
+        provides=".interfaces.ISManagerContentNavtreeStrategy" />
+
+    <browser:page
+        for="*"
+        class=".navigation.navTreeItem"
+        name="navTreeItem"
+        permission="zope.Public"
+        layer="Solgema.NavigationPortlet.interfaces.ISolgemaNavigationPortletLayer"
+      />
+
+    <adapter
+        for="*
+             .interfaces.InavTreeItem"
+        factory=".navigation.ManagerContentNavtreeStrategy"
+        provides=".interfaces.ISManagerContentNavtreeStrategy" />
+
+</configure>

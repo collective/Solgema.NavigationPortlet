@@ -1,0 +1,11 @@
+<tal:defs define="level options/level;
+                  getNavTree view/getNavTree;
+                  navtreepath options/navtreepath;
+                  content python:view.createNavTree(navtreepath, level)" 
+    tal:condition="python:getNavTree.get('children', False)">
+        <ul tal:attributes="class string:navTree navTreeLevel${level}">
+            <li tal:replace="structure content">
+                SUBTREE
+            </li>
+        </ul>
+</tal:defs>

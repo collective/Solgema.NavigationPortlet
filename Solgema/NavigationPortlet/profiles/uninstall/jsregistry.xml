@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<object name="portal_javascripts" meta_type="JavaScripts Registry">
+ <javascript id="jquery.jscrollpane.min.js" remove="True"/>
+ <javascript id="jquery.mousewheel.js" remove="True"/>
+ <javascript id="mwheelIntent.js" remove="True"/>
+ <javascript id="solgemanavigationportlet.js" remove="True"/>
+</object>

@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="Solgema.NavigationPortlet">
+    
+  <genericsetup:registerProfile
+    name="default"
+    title="Solgema Navigation Portlet"
+    directory="profiles/default"
+    description='Adds a navigation portlet with advanced javascript useability.'
+    provides="Products.GenericSetup.interfaces.EXTENSION"
+    />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="Uninstall Solgema Navigation Portlet"
+      directory="profiles/uninstall"
+      description="Uninstall Solgema Navigation Portlet Product."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+</configure>

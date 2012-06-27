@@ -1,0 +1,9 @@
+Changelog for Solgema.NavigationPortlet
+
+    (name of developer listed in brackets)
+
+Solgema.NavigationPortlet - 1.0 Released
+
+    - Initial package structure.
+      [zopeskel]
+

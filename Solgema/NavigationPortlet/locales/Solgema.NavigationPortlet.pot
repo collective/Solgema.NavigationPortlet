@@ -1,0 +1,69 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: Solgema\n"
+"POT-Creation-Date: 2012-06-21 07:43+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: Solgema.NavigationPortlet\n"
+
+#. Default: "A portlet which displays an advanced javascript portlet."
+#: ../profiles/default/portlets.xml
+msgid "description_solgemanavigationportlet_portlet"
+msgstr ""
+
+#. Default: "Roles that can use the scrollPane portlet. If the user hasn't one of the selected roles, the default Navigation portlet will be displayed."
+#: ../portlets/interfaces.py:35
+msgid "help_allowedRolesToToUseScrollPane"
+msgstr ""
+
+#. Default: "Roles that can use the contextual content menu."
+#: ../portlets/interfaces.py:50
+msgid "help_allowedRolesToUseContextualMenu"
+msgstr ""
+
+#. Default: "If selected, the contextual content menu will be activated."
+#: ../portlets/interfaces.py:44
+msgid "help_useContextualMenu"
+msgstr ""
+
+#. Default: "If selected, the navtree items will be expandable through javascript and a vertical scrollbar will be displayed in the portlet, permitting to keep a reasonable height."
+#: ../portlets/interfaces.py:29
+msgid "help_useScrollPane"
+msgstr ""
+
+#. Default: "Contextual Menu Roles"
+#: ../portlets/interfaces.py:49
+msgid "label_allowedRolesToUseContextualMenu"
+msgstr ""
+
+#. Default: "ScrollPane Roles"
+#: ../portlets/interfaces.py:34
+msgid "label_allowedRolesToUseScrollPane"
+msgstr ""
+
+#. Default: "Use Contextual Menu."
+#: ../portlets/interfaces.py:42
+msgid "label_useContextualMenu"
+msgstr ""
+
+#. Default: "Use scrollpane in navigation portlet."
+#: ../portlets/interfaces.py:27
+msgid "label_useScrollPane"
+msgstr ""
+
+#. Default: "Solgema Navigation Portlet"
+#: ../profiles/default/portlets.xml
+msgid "title_solgemanavigationportlet_portlet"
+msgstr ""
+

@@ -1,0 +1,67 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Solgema\n"
+"POT-Creation-Date: 2012-06-21 07:43+0000\n"
+"PO-Revision-Date: 2007-12-14 16:01+0100\n"
+"Last-Translator: Martronic SA <martronic@martronic.ch>\n"
+"Language-Team: EDF\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: fr\n"
+"Language-Name: Français\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: Solgema.blinks\n"
+"X-Is-Fallback-For: fr-be fr-ca fr-lu fr-mc fr-ch fr-fr\n"
+
+#. Default: "A portlet which displays an advanced javascript portlet."
+#: ../profiles/default/portlets.xml
+msgid "description_solgemanavigationportlet_portlet"
+msgstr "Un portlet qui affiche un arbre de navigation avec foncionnalités javascript."
+
+#. Default: "Roles that can use the scrollPane portlet. If the user hasn't one of the selected roles, the default Navigation portlet will be displayed."
+#: ../portlets/interfaces.py:35
+msgid "help_allowedRolesToToUseScrollPane"
+msgstr "Rôles pouvant utiliser l'expansion de la navigation. Si l'utilisateur n'a pas un des rôles sélectionnés, le portlet de navigation par défaut sera affiché."
+
+#. Default: "Roles that can use the contextual content menu."
+#: ../portlets/interfaces.py:50
+msgid "help_allowedRolesToUseContextualMenu"
+msgstr "Rôles pouvant utiliser le menu contextuel."
+
+#. Default: "If selected, the contextual content menu will be activated."
+#: ../portlets/interfaces.py:44
+msgid "help_useContextualMenu"
+msgstr "Si sélectionné, le menu contextuel du click droit seront activées pour ce portlet."
+
+#. Default: "If selected, the navtree items will be expandable through javascript and a vertical scrollbar will be displayed in the portlet, permitting to keep a reasonable height."
+#: ../portlets/interfaces.py:29
+msgid "help_useScrollPane"
+msgstr "Si sélectionné, les fonctionnalités d'expansion et de défilement vertical seront activées pour ce portlet."
+
+#. Default: "Contextual Menu Roles"
+#: ../portlets/interfaces.py:49
+msgid "label_allowedRolesToUseContextualMenu"
+msgstr "Rôles pour le menu contextuel"
+
+#. Default: "ScrollPane Roles"
+#: ../portlets/interfaces.py:34
+msgid "label_allowedRolesToUseScrollPane"
+msgstr "Rôles pour l'expansion de menu"
+
+#. Default: "Use Contextual Menu."
+#: ../portlets/interfaces.py:42
+msgid "label_useContextualMenu"
+msgstr "Utiliser le menu contextuel"
+
+#. Default: "Use scrollpane in navigation portlet."
+#: ../portlets/interfaces.py:27
+msgid "label_useScrollPane"
+msgstr "Utiliser l'expansion de la navigation"
+
+#. Default: "Solgema Navigation Portlet"
+#: ../profiles/default/portlets.xml
+msgid "title_solgemanavigationportlet_portlet"
+msgstr "Solgema Navigation Portlet"
+

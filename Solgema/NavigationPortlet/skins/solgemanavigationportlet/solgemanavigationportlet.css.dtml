@@ -1,0 +1,371 @@
+/* <dtml-with base_properties> (do not remove this :) */
+/* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
+
+
+.useScrollPane.navtreeContainer {
+    overflow:hidden;
+    height:auto;
+    max-height:600px;
+}
+
+.useScrollPane dl.portletNavigationTree {
+    width: 100% ;
+    padding-left: 0 !important;
+}
+
+.useScrollPane dl.portletNavigationTree dd.portletItem,
+.useScrollPane dl.portletNavigationTree dd.portletItem {
+    margin:0px;
+}
+
+.useScrollPane dl.portletNavigationTree dd a {
+    text-decoration: none;
+    display: block;
+    padding: 0;
+    zoom:1;
+}
+
+.useScrollPane dl.portletNavigationTree ul {
+    margin-bottom:0px;
+}
+
+.useScrollPane dl.portletNavigationTree li {
+    display: block;
+    padding:0px;
+    margin:0px;
+    list-style-type: none;
+    list-style-position: outside;
+}
+
+.useScrollPane dl.portlet ul.navTreeLevel0 > .navTreeItem {
+    padding-left:1px;
+}
+
+.useScrollPane dl.portletNavigationTree div {
+    position:relative;
+}
+
+.useScrollPane dl.portletNavigationTree .inner_section {
+    overflow:hidden;
+    display:block;
+}
+
+.useScrollPane dl.portletNavigationTree dd li div.portal a.navTreeText span.container {
+    background-image: none;
+    display:block;
+    padding-left:0px;
+    zoom:1;
+}
+
+.useScrollPane dl.portletNavigationTree dd li div.portal.inner_section:hover a.navTreeText span.container,
+.useScrollPane dl.portletNavigationTree dd li div.portal a.navTreeText:hover span.container {	
+    background-image: none;
+}
+
+.useScrollPane dl.portletNavigationTree li a span {
+    display:block;
+    zoom:1;
+}
+
+.useScrollPane dl.portletNavigationTree dd li a.navTreeText span.container {
+    padding-left:15px;
+}
+
+.SolgemaNavigationPortlet.showIcons dl.portletNavigationTree li a.navTreeText span.container {
+    display:block;
+    padding-left:15px;
+    zoom:1;
+}
+
+.useScrollPane dl.portletNavigationTree li a img {
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 2px;
+    clear:left;
+    float: left;
+    display:none;
+}
+
+.useScrollPane dl.portletNavigationTree li a.navTreeImage {
+    padding-top:0px !important;
+    padding-bottom:0px !important;
+    border:none !important;
+    position: absolute;
+    padding:0px !important;
+    background-color: transparent !important;
+}
+
+.useScrollPane dl.portletNavigationTree li a.navTreeImage img {
+    margin-top:2px;
+}
+
+.useScrollPane dl.portletNavigationTree .navTreeCurrentItem {
+    display: block;
+    zoom:1;
+}
+
+.useScrollPane dl.portletNavigationTree li.navTreeItemInPath {
+    display: block;
+}
+
+.useScrollPane dl.portletNavigationTree dd li a.navTreeText {	
+    display: block;
+    zoom:1;
+}
+
+.useScrollPane dl.portletNavigationTree dd li a.navTreeText span.container {	
+    background-image: url(&dtml-portal_url;/twistie-closed.gif);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: 2px 0.3em;
+    display: block;
+    zoom:1;
+}
+
+.useScrollPane dl.portletNavigationTree dd a.navTreeText.navTreeCurrentItem span.container,
+.useScrollPane dl.portletNavigationTree dd li a.navTreeText:hover span.container {	
+    background-image: url(&dtml-portal_url;/twistie-closed-over.gif);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: 2px 0.3em;
+    display: block;
+    zoom:1;
+}
+
+.useScrollPane dl.portletNavigationTree dd li .inner_section.navTreeFolderish a.navTreeText span.container  {
+    background-image: url(&dtml-portal_url;/twistie-closed.gif);
+}
+
+.useScrollPane dl.portletNavigationTree dd li .inner_section.navTreeFolderish a.navTreeText.navTreeCurrentItem span.container,
+.useScrollPane dl.portletNavigationTree dd li .inner_section.navTreeFolderish a.navTreeText:hover span.container  {
+    background-image: url(&dtml-portal_url;/twistie-closed-over.gif);
+}
+
+.useScrollPane dl.portletNavigationTree dd li .inner_section.portal a.navTreeText {
+    background-image: none !important ;
+    background-repeat: no-repeat;
+}
+
+.useScrollPane dl.portletNavigationTree dd li .inner_section.navTreeFolderish a.navTreeText.navTreeOpen span.container {
+    background-image: url(&dtml-portal_url;/twistie-open.gif) ;
+    background-repeat: no-repeat;
+}
+
+.useScrollPane dl.portletNavigationTree dd li .inner_section.navTreeFolderish a.navTreeText.navTreeOpen.navTreeCurrentItem span.container,
+.useScrollPane dl.portletNavigationTree dd li .inner_section.navTreeFolderish a.navTreeText.navTreeOpen:hover span.container {
+    background-image: url(&dtml-portal_url;/twistie-open-over.gif) ;
+    background-repeat: no-repeat;
+}
+
+.useScrollPane dl.portletNavigationTree dd li .inner_section.is_default_page a.navTreeText span.container {
+    background-image: url(&dtml-portal_url;/twistie-default.gif) ;
+    background-repeat: no-repeat;
+}
+
+.useScrollPane dl.portletNavigationTree dd li .inner_section.is_default_page a.navTreeText.navTreeCurrentItem span.container,
+.useScrollPane dl.portletNavigationTree dd li .inner_section.is_default_page a.navTreeText:hover span.container {
+    background-image: url(&dtml-portal_url;/twistie-default-over.gif) ;
+    background-repeat: no-repeat;
+}
+
+.useScrollPane dl.portletNavigationTree li ul,
+.useScrollPane dl.portletNavigationTree li ul.navTreeLevel0,
+.useScrollPane dl.portletNavigationTree li ul.navTreeLevel1,
+.useScrollPane dl.portletNavigationTree li ul.navTreeLevel2,
+.useScrollPane dl.portletNavigationTree li ul.navTreeLevel3,
+.useScrollPane dl.portletNavigationTree li ul.navTreeLevel4,
+.useScrollPane dl.portletNavigationTree li ul.navTreeLevel5 {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+    margin-top: 0;
+}
+
+.useScrollPane dl.portletNavigationTree dd .sectionLevel0 a.navTreeText span.container {
+    background-position: 2px 0.3em;
+}
+
+.useScrollPane dl.portletNavigationTree dd .sectionLevel0 a.navTreeImage {
+    left: 14px;
+}
+
+.useScrollPane dl.portletNavigationTree dd .sectionLevel1 a.navTreeText span.container {
+    margin-left: 10px;
+}
+
+.useScrollPane dl.portletNavigationTree dd .sectionLevel1 a.navTreeImage {
+    left: 24px;
+}
+
+.useScrollPane dl.portletNavigationTree dd .sectionLevel2 a.navTreeText span.container {
+    margin-left: 20px;
+}
+
+.useScrollPane dl.portletNavigationTree dd .sectionLevel2 a.navTreeImage {
+    left: 34px;
+}
+
+.useScrollPane dl.portletNavigationTree dd .sectionLevel3 a.navTreeText span.container {
+    margin-left: 30px; 
+}
+
+.useScrollPane dl.portletNavigationTree dd .sectionLevel3 a.navTreeImage {
+    left: 44px;
+}
+
+.useScrollPane dl.portletNavigationTree dd .sectionLevel4 a.navTreeText span.container {
+    margin-left: 40px;
+}
+
+.useScrollPane dl.portletNavigationTree dd .sectionLevel4 a.navTreeImage {
+    left: 54px;
+}
+
+.useScrollPane dl.portletNavigationTree dd .sectionLevel5 a.navTreeText span.container {
+    margin-left: 50px;
+}
+
+.useScrollPane dl.portletNavigationTree dd .sectionLevel5 a.navTreeImage {
+    left: 64px;
+}
+
+.useScrollPane dl.portletNavigationTree.dropDownEnable ul.navTreeLevel0 li {
+    position:relative;
+}
+
+
+.useScrollPane dl.portletNavigationTree.dropDownEnable li.navTreeClosed div ul.navTreeLevel1 {
+    position:absolute;
+    width:180px;
+    top:0px;
+}
+
+.useScrollPane dl.portletNavigationTree.dropDownEnable li.navTreeClosed:hover div ul.navTreeLevel1 {
+    display:block !important;
+}
+
+.useScrollPane dl.portletNavigationTree.dropDownEnable li.navTreeClosed ul.navTreeLevel1 a {
+    padding-top:1px;
+    padding-bottom:1px;
+}
+
+
+.useScrollPane  dl.portletNavigationTree.dropDownEnable ul.navTreeLevel1 {
+    right:-181px;
+}
+
+.useScrollPane dl.portletNavigationTree.dropDownEnable.dropDownEnable li.navTreeClosed ul.navTreeLevel1 li a {
+    background-position:2px 0.3em;
+    padding-left:14px !important;
+}
+
+.useScrollPane dl.portletNavigationTree li.navTreeClosed ul {
+    display:none;
+}
+
+.useScrollPane dl.portletNavigationTree li.navTreeClosed li.navTreeItemInPath ul,
+.useScrollPane dl.portletNavigationTree li.navTreeClosed li.navTreeFolderish ul {
+    display:block;
+}
+
+.useScrollPane .contentmenu_selected a.navTreeText {	
+    background-color: &dtml-helpBackgroundColor; !important;
+    color:black !important;
+}
+
+.useScrollPane .contentmenu_selected a.navTreeText:hover,
+dl.portletNavigationTree .contentmenu_selected:hover a.navTreeText {	
+    color:black !important;
+}
+
+.useScrollPane dl.portletNavigationTree li a img {
+    display:block !important;
+}
+
+.useScrollPane dl.portletNavigationTree dd li a.navTreeText span.container {	
+    background-image: url(&dtml-portal_url;/twistie-nonfolder.gif);
+    background-repeat: no-repeat;
+    background-position: 2px 0.3em;
+}
+
+.useScrollPane dl.portletNavigationTree dd li span.inner_section {
+    display:block;
+    position:relative;
+    overflow:hidden;
+}
+
+.useScrollPane dl.portletNavigationTree dd li .inner_section:hover a.navTreeText span.container,
+.useScrollPane dl.portletNavigationTree dd li a.navTreeText:hover span.container {	
+    background-image: url(&dtml-portal_url;/twistie-nonfolder-over.gif);
+}
+
+.useScrollPane dl.portletNavigationTree dd li .inner_section.navTreeFolderish a.navTreeText span.container  {
+    background-image: url(&dtml-portal_url;/twistie-closed.gif);
+}
+
+.useScrollPane dl.portletNavigationTree dd li .inner_section.navTreeFolderish:hover a.navTreeText span.container,
+.useScrollPane dl.portletNavigationTree dd li .inner_section.navTreeFolderish a.navTreeText:hover span.container  {
+    background-image: url(&dtml-portal_url;/twistie-closed-over.gif);
+}
+
+.useScrollPane dl.portletNavigationTree dd li .inner_section.navTreeFolderish a.navTreeText.navTreeOpen span.container {
+    background-image: url(&dtml-portal_url;/twistie-open.gif) ;
+}
+
+.useScrollPane dl.portletNavigationTree dd li .inner_section.navTreeFolderish:hover a.navTreeText.navTreeOpen span.container,
+.useScrollPane dl.portletNavigationTree dd li .inner_section.navTreeFolderish a.navTreeText.navTreeOpen:hover span.container {
+    background-image: url(&dtml-portal_url;/twistie-open-over.gif) ;
+}
+
+.useScrollPane dl.portletNavigationTree dd li .inner_section.excluded a.navTreeText span.container {
+    background-image: url(&dtml-portal_url;/twistie-excluded.gif);
+}
+
+.useScrollPane dl.portletNavigationTree dd li .inner_section.excluded:hover a.navTreeText span.container,
+.useScrollPane dl.portletNavigationTree dd li .inner_section.excluded a.navTreeText:hover span.container {
+    background-image: url(&dtml-portal_url;/twistie-excluded-over.gif);
+}
+
+.useScrollPane dl.portletNavigationTree dd li .inner_section.navTreeFolderish.excluded a.navTreeText span.container  {
+    background-image: url(&dtml-portal_url;/twistie-closed-excluded.gif);
+}
+
+.useScrollPane dl.portletNavigationTree dd li .inner_section.navTreeFolderish.excluded:hover a.navTreeText span.container,
+.useScrollPane dl.portletNavigationTree dd li .inner_section.navTreeFolderish.excluded a.navTreeText:hover span.container  {
+    background-image: url(&dtml-portal_url;/twistie-closed-excluded-over.gif);
+}
+
+.useScrollPane dl.portletNavigationTree dd li .inner_section.navTreeFolderish.excluded a.navTreeText.navTreeOpen span.container {
+    background-image: url(&dtml-portal_url;/twistie-open-excluded.gif);
+}
+
+.useScrollPane dl.portletNavigationTree dd li .inner_section.navTreeFolderish.excluded:hover a.navTreeText.navTreeOpen span.container,
+.useScrollPane dl.portletNavigationTree dd li .inner_section.navTreeFolderish.excluded a.navTreeText.navTreeOpen:hover span.container {
+    background-image: url(&dtml-portal_url;/twistie-open-excluded-over.gif);
+}
+
+.useScrollPane dl.portletNavigationTree dd li .inner_section.is_default_page a.navTreeText span.container {
+    background-image: url(&dtml-portal_url;/twistie-default.gif);
+}
+
+.useScrollPane dl.portletNavigationTree dd li .inner_section.is_default_page:hover a.navTreeText span.container,
+.useScrollPane dl.portletNavigationTree dd li .inner_section.is_default_page a.navTreeText:hover span.container {
+    background-image: url(&dtml-portal_url;/twistie-default-over.gif);
+}
+
+.useScrollPane div.jspVerticalBar {
+    position:absolute !important;
+    width:7px;
+}
+
+.useScrollPane .jspTrack {
+    background: #ddd;
+}
+
+.useScrollPane .jspDrag {
+    background: #205C90;
+}
+
+/* </dtml-with> */
+
+

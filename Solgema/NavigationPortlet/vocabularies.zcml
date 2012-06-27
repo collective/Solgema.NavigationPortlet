@@ -1,0 +1,12 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+	   xmlns:five="http://namespaces.zope.org/five">
+
+  <!-- Vocabularies -->
+
+  <utility
+    component=".vocabularies.AllRolesVocabularyFactory"
+    name="plone.app.vocabularies.AllRoles"
+    provides="zope.schema.interfaces.IVocabularyFactory"
+    />
+
+</configure>

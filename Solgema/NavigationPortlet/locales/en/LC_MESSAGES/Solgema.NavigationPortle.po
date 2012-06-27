@@ -1,0 +1,41 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Solgema\n"
+"POT-Creation-Date: 2008-11-29 11:06+0000\n"
+"PO-Revision-Date: 2007-12-14 16:01+0100\n"
+"Last-Translator: Martronic SA <martronic@martronic.ch>\n"
+"Language-Team: EDF\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: Solgema.blinks\n"
+"X-Is-Fallback-For: en-au en-bz en-ca en-ie en-jm en-nz en-ph en-za en-tt en-gb en-us en-zw\n"
+
+msgid "title_solgemablinks_portlet"
+msgstr "Solgema b-links portlet"
+
+msgid "description_solgemablinks_portlet"
+msgstr "Solgema b-links portlet displays links from www.b-links.fr. Please check www.b-links.fr for futher informations."
+
+msgid "label_add_solgemablinks_portlet"
+msgstr "Add Solgema b-links portlet"
+
+msgid "label_edit_solgemablinks_portlet"
+msgstr "Edit Solgema b-links portlet"
+
+msgid "label_blinks_key"
+msgstr "b-links key"
+
+msgid "description_blinks_key"
+msgstr "The key given to you by www.b-links.fr. This key is in the code field on your b-links.fr account. The code begins with \"<?php\". You only need the part that is just after \"GET\": /apiblinks?i=61&k=5812be2894&s="
+
+msgid "label_blinks_urls"
+msgstr "Site urls"
+
+msgid "description_blinks_urls"
+msgstr "Enter here the urls of the pages where the links must be displayed. These urls are those you entered in www.b-links.fr. You must write one url per line.."
+
