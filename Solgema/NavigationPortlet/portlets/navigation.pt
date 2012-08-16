@@ -7,9 +7,7 @@
                 contentMenuEnabledClass python:useDDM and ' contextualContentMenuEnabled' or ''"
     tal:condition="view/available">
 <div tal:attributes="class string:navtreeContainer ${useScrollPane_class} SolgemaNavigationPortlet">
-<dl tal:attributes="class python:useDDM and 'portlet portletNavigationTree dropDownEnabled' or 'portlet portletNavigationTree';
-                    onmouseover python:useDDM and 'menuHover(\'navTreeSubmenu\');;' or None;
-                    onmouseout python:useDDM and 'tryHideSubMenues();;' or None;">
+<dl tal:attributes="class python:useDDM and 'portlet portletNavigationTree dropDownEnabled' or 'portlet portletNavigationTree';">
 
     <dt class="portletHeader"
         tal:attributes="class python:view.hasName() and 'portletHeader' or 'portletHeader hiddenStructure'">
