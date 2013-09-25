@@ -54,27 +54,27 @@ class ISolgemaNavigationPortlet(INavigationPortlet):
             required=False)
 
 class ISNavigationQueryBuilder(Interface):
-    """An object which returns a catalog query when called, used to 
+    """An object which returns a catalog query when called, used to
     construct a navigation tree.
     """
-    
+
     def __call__():
         """Returns a mapping describing a catalog query used to build a
            navigation structure.
         """
 
 class ISManagerNavigationQueryBuilder(Interface):
-    """An object which returns a catalog query when called, used to 
+    """An object which returns a catalog query when called, used to
     construct a navigation tree.
     """
-    
+
     def __call__():
         """Returns a mapping describing a catalog query used to build a
            navigation structure.
         """
 
 class ISManagerContentNavtreeQueryBuilder(Interface):
-    
+
     def __call__():
         """Returns a mapping describing a catalog query used to build a
            navigation structure.

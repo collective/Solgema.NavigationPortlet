@@ -1,4 +1,4 @@
-<tal:block i18n:domain="plone"  
+<tal:block i18n:domain="plone"
     tal:define="root view/navigation_root;
                 useDDM view/canUseContextualMenu;
                 canManage view/canManage;

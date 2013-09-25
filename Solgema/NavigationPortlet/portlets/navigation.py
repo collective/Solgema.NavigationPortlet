@@ -116,7 +116,7 @@ def buildFolderTreeCustom(context, obj=None, query={}, strategy=NavtreeStrategyB
         itemPaths[rootPath]['_pruneSubtree'] = True
 
     def insertElement(itemPaths, item, forceInsert=False):
-    
+
         itemPath = item.getPath()
         itemInserted = (itemPaths.get(itemPath, {}).get('item', None) is not None)
         if not forceInsert and itemInserted:
@@ -150,7 +150,7 @@ def buildFolderTreeCustom(context, obj=None, query={}, strategy=NavtreeStrategyB
 
             if strategy is not None:
                 newNode = strategy.decoratorFactory(newNode)
-                
+
             if parentPath in itemPaths:
                 itemParent = itemPaths[parentPath]
                 if forceInsert:
@@ -240,11 +240,11 @@ class navTreeItem( BrowserPage ):
 
     def getPortletRenderer(self):
         portlethash = self.request.get('portlethash', '')
-        info = unhashPortletInfo(portlethash) 
+        info = unhashPortletInfo(portlethash)
         manager = getUtility(IPortletManager, info['manager'])
-        
-        assignment = assignment_from_key(context = self.context, 
-                                         manager_name = info['manager'], 
+
+        assignment = assignment_from_key(context = self.context,
+                                         manager_name = info['manager'],
                                          category = info['category'],
                                          key = info['key'],
                                          name = info['name'])
@@ -402,7 +402,7 @@ class Assignment(navigation.Assignment):
     allowedRolesToUseScrollPane = ['Manager', 'Site Administrator']
     useContextualMenu = True
     allowedRolesToUseContextualMenu = ['Manager', 'Site Administrator']
-    
+
     def __init__(self, name=u"", root=None, currentFolderOnly=False, includeTop=False, topLevel=1, bottomLevel=0, useScrollPane=True, allowedRolesToUseScrollPane=['Manager', 'Site Administrator'], useContextualMenu=True, allowedRolesToUseContextualMenu=['Manager', 'Site Administrator']):
         super(Assignment, self).__init__(name, root, currentFolderOnly, includeTop, topLevel, bottomLevel)
         self.useScrollPane = useScrollPane
@@ -424,7 +424,7 @@ class Renderer(navigation.Renderer):
         tree = self.getNavTree()
         root = self.getNavRoot()
         return (root is not None and len(tree['children']) > 0)
-        
+
     def include_top(self):
         if self.canUseScrollPane() and self.canManage():
             return True
@@ -474,18 +474,18 @@ class Renderer(navigation.Renderer):
     def root_item_class(self):
         context = aq_inner(self.context)
         root = self.getNavRoot()
-        isDefaultPage = utils.isDefaultPage(context, self.request) 
+        isDefaultPage = utils.isDefaultPage(context, self.request)
         if (aq_base(root) is aq_base(context) or
                 (aq_base(root) is aq_base(aq_parent(aq_inner(context))) and isDefaultPage)):
             return 'navTreeCurrentItem'
         else:
             return ''
-            
+
     def root_icon(self):
         ploneview = getMultiAdapter((self.context, self.request), name=u'plone')
         icon = ploneview.getIcon(self.getNavRoot())
         return icon.url
-            
+
     def root_is_portal(self):
         root = self.getNavRoot()
         return aq_base(root) is aq_base(self.urltool.getPortalObject())
@@ -499,7 +499,7 @@ class Renderer(navigation.Renderer):
         if self.canUseScrollPane() and self.canManage():
             topLevel = 0
         rootPath = getRootPath(self.context, currentFolderOnly, topLevel, self.data.root)
-        
+
         if rootPath == self.urltool.getPortalPath():
             return portal
         else:
@@ -540,7 +540,7 @@ class Renderer(navigation.Renderer):
         elif childs:
             firstItem = childs[0]['getURL']
             lastItem = childs[-1]['getURL']
-            
+
         bottomLevel = self.data.bottomLevel or self.properties.getProperty('bottomLevel', 0)
         return self.recurse(children=self.getNavTree().get('children', []), level=1, bottomLevel=bottomLevel, firstItem=firstItem, lastItem=lastItem, childs=str(childs))
 
@@ -624,7 +624,7 @@ class QueryBuilder(object):
         navtree_properties = getattr(portal_properties, 'navtree_properties')
         pm = getToolByName(portal,'portal_membership')
         user = pm.getAuthenticatedMember()
-        
+
         # Acquire a custom nav query if available
         customQuery = getattr(context, 'getCustomNavQuery', None)
         if customQuery is not None and utils.safe_callable(customQuery):
@@ -721,7 +721,7 @@ class ManagerQueryBuilder(object):
 
     def __call__(self):
         return self.query
-        
+
 class NavtreeStrategy(SitemapNavtreeStrategy):
     """The navtree strategy used for the default navigation portlet
     """
@@ -732,7 +732,7 @@ class NavtreeStrategy(SitemapNavtreeStrategy):
         SitemapNavtreeStrategy.__init__(self, context, portlet)
         portal_properties = getToolByName(context, 'portal_properties')
         navtree_properties = getattr(portal_properties, 'navtree_properties')
-        
+
         # XXX: We can't do this with a 'depth' query to EPI...
         self.bottomLevel = portlet.bottomLevel or navtree_properties.getProperty('bottomLevel', 0)
 
@@ -791,7 +791,7 @@ class ManagerNavtreeStrategy(SitemapNavtreeStrategy):
         portal_url = getToolByName(context, 'portal_url')
         portal = portal_url.getPortalObject()
         request = context.REQUEST
-        
+
         newNode = node.copy()
         item = node['item']
 
@@ -850,7 +850,7 @@ class ManagerContentNavtreeStrategy(ManagerNavtreeStrategy):
         currentFolderOnly = True
         topLevel = 0
         self.rootPath = getRootPath(context, currentFolderOnly, topLevel, portlet.root)
-            
+
 def getRootPath(context, currentFolderOnly, topLevel, root):
     """Helper function to calculate the real root path
     """
@@ -858,12 +858,12 @@ def getRootPath(context, currentFolderOnly, topLevel, root):
     if currentFolderOnly:
         folderish = getattr(aq_base(context), 'isPrincipiaFolderish', False) and not INonStructuralFolder.providedBy(context)
         parent = aq_parent(context)
-        
+
         is_default_page = False
         browser_default = IBrowserDefault(parent, None)
         if browser_default is not None:
             is_default_page = (browser_default.getDefaultPage() == context.getId())
-        
+
         if not folderish:
             return '/'.join(parent.getPhysicalPath())
         else:
@@ -884,6 +884,6 @@ def getRootPath(context, currentFolderOnly, topLevel, root):
             rootPath = rootPath + '/' + '/'.join(contextSubPathElements[:topLevel])
         else:
             return None
-    
+
     return rootPath
-    
+

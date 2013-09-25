@@ -15,7 +15,7 @@
 <tal:navitem repeat="node children">
 <tal:number define="global num python:num + 1">
 <li tal:define="show_children   node/show_children;
-                item_id         node/item/id; 
+                item_id         node/item/id;
                 children        node/children;
                 item_url        node/getURL;
                 item_icon       nocall:node/item_icon;
@@ -48,7 +48,7 @@
 
     <span tal:define="item_class string:state-${node/normalized_review_state}"
          tal:attributes="class string:outer_section ${li_extr_class}${li_folder_class}${is_open}">
-     
+
       <span tal:define="item_class python:is_current and item_class + ' navTreeCurrentItem' or item_class"
          tal:attributes="class python:'inner_section'+li_class+li_extr_class+li_folder_class+firstAllItem+lastAllItem+' sectionLevel'+str(li_level)+defaultpage+excluded_class+contentMenuEnabledClass">
 
@@ -66,7 +66,7 @@
           tal:attributes="class python:'navTree navTreeLevel'+str(level)+menuclass;
                           id python:not is_in_path and not is_current and level == 1 and item_id+'_smenu' or None;
                           style python:not is_current and not is_in_path and level == 1 and 'display:none;;' or None;"
-          tal:condition="python: len(children) > 0 and show_children">  
+          tal:condition="python: len(children) > 0 and show_children">
         <span tal:replace="structure python:view.recurse(children=children, level=level+1, bottomLevel=bottomLevel, firstItem=firstI, lastItem=lastI)" />
       </ul>
     </span>
