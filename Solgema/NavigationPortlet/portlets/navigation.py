@@ -1,7 +1,6 @@
 from Acquisition import aq_inner, aq_base, aq_parent
 from zope.interface import implements, Interface
 from zope.component import adapts, getMultiAdapter, queryUtility, getUtility
-from zope import schema
 from zope.formlib import form
 from zope.publisher.browser import BrowserPage
 
@@ -10,24 +9,21 @@ from plone.i18n.normalizer.interfaces import IIDNormalizer
 from types import StringType
 
 from plone.memoize import instance
-from plone.memoize import view
 from plone.memoize.compress import xhtml_compress
 from plone.memoize.instance import memoize
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import utils
-from Products.ATContentTypes.interface import IATFolder
 
-from Products.CMFPlone.interfaces import INonStructuralFolder, IBrowserDefault
+from Products.CMFPlone.interfaces import INonStructuralFolder
+#from Products.CMFPlone.interfaces import IBrowserDefault
 from Products.CMFPlone import PloneMessageFactory as _pmf
-from Products.CMFPlone.browser.interfaces import INavigationTree
 from Products.CMFPlone.browser.navtree import SitemapNavtreeStrategy
 
-from plone.portlets.interfaces import IPortletManager, IPortletRenderer, IPortletDataProvider
+from plone.portlets.interfaces import IPortletManager, IPortletRenderer
 from plone.portlets.utils import unhashPortletInfo
 
-from plone.app.portlets.portlets.navigation import INavigationPortlet
 from plone.app.portlets.utils import assignment_from_key
 from plone.app.portlets.portlets import base
 from plone.app.portlets.portlets import navigation
@@ -37,21 +33,20 @@ from plone.app.layout.navigation.navtree import buildFolderTree, NavtreeStrategy
 from plone.app.layout.navigation.defaultpage import isDefaultPage
 from plone.app.layout.navigation.interfaces import INavigationQueryBuilder, INavtreeStrategy
 
-from plone.app.vocabularies.catalog import SearchableTextSourceBinder
 from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
 
 from .interfaces import *
-from Solgema.NavigationPortlet.config import _
+
 
 def buildFolderTreeCustom(context, obj=None, query={}, strategy=NavtreeStrategyBase()):
 
     portal_url = getToolByName(context, 'portal_url')
     portal_catalog = getToolByName(context, 'portal_catalog')
 
-    showAllParents = strategy.showAllParents
+    #showAllParents = strategy.showAllParents
     rootPath = strategy.rootPath
 
-    request = getattr(context, 'REQUEST', {})
+    #request = getattr(context, 'REQUEST', {})
 
     objPath = None
     objPhysicalPath = None
@@ -341,9 +336,9 @@ class navTreeItem( BrowserPage ):
     def getNavTree(self, context=None):
         if not context:
             context = self.getContext()
-        portal = self.urltool.getPortalObject()
-        pm = getToolByName(portal,'portal_membership')
-        user = pm.getAuthenticatedMember()
+        #portal = self.urltool.getPortalObject()
+        #pm = getToolByName(portal,'portal_membership')
+        #user = pm.getAuthenticatedMember()
         if self.request.get('navtreepath'):
             canUseScrollPane = self.portletRenderer.canUseScrollPane()
             if not canUseScrollPane or ( canUseScrollPane and not self.portletRenderer.canManage()):
@@ -382,7 +377,7 @@ class navTreeItem( BrowserPage ):
                     i = 0
                 else:
                     i += 1
-            baseChildren = self.getNavTree().get('children', [])
+            #baseChildren = self.getNavTree().get('children', [])
         return self.recurse(children=self.getNavTree().get('children', []), level=level+1, bottomLevel=0, firstItem=firstItem, lastItem=lastItem, childs=str(childs))
 
     def recurse(self, children=[], level=None, bottomLevel=0, firstItem='', lastItem='', childs=''):
@@ -635,7 +630,7 @@ class QueryBuilder(object):
         # Construct the path query
 
         rootPath = getNavigationRoot(context, relativeRoot=portlet.root)
-        currentPath = '/'.join(context.getPhysicalPath())
+        #currentPath = '/'.join(context.getPhysicalPath())
 
         # If we are above the navigation root, a navtree query would return
         # nothing (since we explicitly start from the root always). Hence,
@@ -645,7 +640,7 @@ class QueryBuilder(object):
 
         topLevel = portlet.topLevel or navtree_properties.getProperty('topLevel', 0)
         if topLevel and topLevel > 0:
-             query['path']['navtree_start'] = topLevel + 1
+            query['path']['navtree_start'] = topLevel + 1
 
         # XXX: It'd make sense to use 'depth' for bottomLevel, but it doesn't
         # seem to work with EPI.
@@ -685,7 +680,7 @@ class ManagerQueryBuilder(object):
         portal_properties = getToolByName(context, 'portal_properties')
         navtree_properties = getattr(portal_properties, 'navtree_properties')
 
-        portal_url = getToolByName(context, 'portal_url')
+        #portal_url = getToolByName(context, 'portal_url')
         pm = getToolByName(portal,'portal_membership')
         user = pm.getAuthenticatedMember()
 
@@ -694,7 +689,7 @@ class ManagerQueryBuilder(object):
             query = customQuery()
         else:
             query = {}
-        rootPath = getNavigationRoot(context, relativeRoot=portlet.root)
+        #rootPath = getNavigationRoot(context, relativeRoot=portlet.root)
         currentPath = '/'.join(context.getPhysicalPath())
 
         query['path'] = {'query' : currentPath, 'navtree' : 1, 'navtree_start':0}
@@ -859,10 +854,10 @@ def getRootPath(context, currentFolderOnly, topLevel, root):
         folderish = getattr(aq_base(context), 'isPrincipiaFolderish', False) and not INonStructuralFolder.providedBy(context)
         parent = aq_parent(context)
 
-        is_default_page = False
-        browser_default = IBrowserDefault(parent, None)
-        if browser_default is not None:
-            is_default_page = (browser_default.getDefaultPage() == context.getId())
+        #is_default_page = False
+        #browser_default = IBrowserDefault(parent, None)
+        #if browser_default is not None:
+        #    is_default_page = (browser_default.getDefaultPage() == context.getId())
 
         if not folderish:
             return '/'.join(parent.getPhysicalPath())
@@ -886,4 +881,3 @@ def getRootPath(context, currentFolderOnly, topLevel, root):
             return None
 
     return rootPath
-

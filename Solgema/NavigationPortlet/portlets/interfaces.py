@@ -1,23 +1,17 @@
 from zope.interface import Interface
 from zope import schema
-from plone.portlets.interfaces import IPortletAssignmentMapping
-from plone.portlets.interfaces import IPortletManager
-from plone.portlets.interfaces import IPortletManagerRenderer
-from plone.portlets.interfaces import IPlacelessPortletManager
-from plone.portlets.interfaces import IPortletRenderer
-from plone.portlets.interfaces import IPortletRetriever
-from plone.app.portlets.interfaces import IColumn
-from plone.app.portlets.interfaces import ILeftColumn
-from plone.app.portlets.interfaces import IRightColumn
 from plone.app.portlets.portlets.navigation import INavigationPortlet
 from plone.app.layout.navigation.interfaces import INavtreeStrategy
 from Solgema.NavigationPortlet.config import _
 
+
 class InavTreeItem(Interface):
     """A View that render a part of the navtree"""
 
+
 class INavtreeItemStrategy(INavtreeStrategy):
     """An interface for the navtreeitem strategy"""
+
 
 class ISolgemaNavigationPortlet(INavigationPortlet):
     """A portlet which can render the navigation tree
@@ -53,6 +47,7 @@ class ISolgemaNavigationPortlet(INavigationPortlet):
             default=['Manager', 'Site Administrator'],
             required=False)
 
+
 class ISNavigationQueryBuilder(Interface):
     """An object which returns a catalog query when called, used to
     construct a navigation tree.
@@ -62,6 +57,7 @@ class ISNavigationQueryBuilder(Interface):
         """Returns a mapping describing a catalog query used to build a
            navigation structure.
         """
+
 
 class ISManagerNavigationQueryBuilder(Interface):
     """An object which returns a catalog query when called, used to
@@ -73,12 +69,14 @@ class ISManagerNavigationQueryBuilder(Interface):
            navigation structure.
         """
 
+
 class ISManagerContentNavtreeQueryBuilder(Interface):
 
     def __call__():
         """Returns a mapping describing a catalog query used to build a
            navigation structure.
         """
+
 
 class ISManagerNavtreeStrategy(INavtreeStrategy):
 
