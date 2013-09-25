@@ -6,14 +6,17 @@ version = '1.0'
 setup(name='Solgema.NavigationPortlet',
       version=version,
       description="Solgema",
-      long_description=open("README.txt").read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
-      # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
+      long_description=(open("README.txt").read() + "\n" +
+                        open(os.path.join("docs", "HISTORY.txt")).read()),
+      # Get more strings from
+      # http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
-        "Framework :: Plone",
-        "Programming Language :: Python",
-        "Topic :: Software Development :: Libraries :: Python Modules",
-        ],
+          "Framework :: Plone",
+          "Programming Language :: Python",
+          "Programming Language :: Python :: 2.6",
+          "Programming Language :: Python :: 2.7",
+          "Topic :: Software Development :: Libraries :: Python Modules",
+          ],
       keywords='Solgema, blinks, backlinks',
       author='Martronic SA',
       author_email='martronic@martronic.ch',
