@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 <layers>
-    <layer name="solgemanavigationportlet"
+    <layer name="solgemanavigationportlet" 
            interface="Solgema.NavigationPortlet.interfaces.ISolgemaNavigationPortletLayer" />
 </layers>

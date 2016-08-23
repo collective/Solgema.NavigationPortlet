@@ -1,0 +1,52 @@
+<tal:block i18n:domain="plone"  
+    tal:define="root view/navigation_root;
+                useDDM view/canUseContextualMenu;
+                canManage view/canManage;
+                useScrollPane view/canUseScrollPane | python:True;
+                useScrollPane_class python:useScrollPane and 'useScrollPane' or '';
+                contentMenuEnabledClass python:useDDM and ' contextualContentMenuEnabled' or ''"
+    tal:condition="view/available">
+<div tal:attributes="class string:navtreeContainer ${useScrollPane_class} SolgemaNavigationPortlet">
+<dl tal:attributes="class python:useDDM and 'portlet portletNavigationTree contextMenuEnabled' or 'portlet portletNavigationTree';">
+
+    <dt class="portletHeader"
+        tal:attributes="class python:view.hasName() and 'portletHeader' or 'portletHeader hiddenStructure'">
+        <span class="portletTopLeft"></span>
+        <a href="#"
+           class="tile"
+           tal:attributes="href string:${root/absolute_url}/sitemap;"
+           tal:content="view/title"
+           i18n:translate="">Navigation</a>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <dd class="portletItem lastItem" tal:define="include_top view/include_top">
+        <ul class="navTree navTreeLevel0">
+            <li class="navTreeItem liLevel0"
+                tal:condition="include_top">
+                <div tal:define="selectedClass view/root_item_class;
+                                 rootIsPortal view/root_is_portal;
+                                 relative_url python:root.absolute_url(relative=1)"
+                     tal:attributes="class string:inner_section portal firstAllItem${contentMenuEnabledClass}">
+                    <a tal:attributes="href python:canManage and root.absolute_url()+'/folder_contents' or root.absolute_url();
+                                      title root/Description | nothing;
+                                      class string:${selectedClass} navTreeText kssattr-navtreepath-${relative_url}">
+                        <span class="container">
+                            <img src="" height="16" width="16" alt=""
+                              tal:condition="view/root_icon"
+                              tal:attributes="src view/root_icon" />
+                            <span tal:replace="root/Title | python:'Root'">Root item title</span>
+                        </span>
+                   </a>
+                </div>
+            </li>
+            <li tal:replace="structure python:view.createNavTree(context)">
+                SUBTREE
+            </li>
+        </ul>
+        <span class="portletBottomLeft"></span>
+        <span class="portletBottomRight"></span>
+    </dd>
+</dl>
+</div>
+</tal:block>

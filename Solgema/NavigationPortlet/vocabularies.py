@@ -6,7 +6,10 @@ from zope.interface import implements
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
-from zope.site.hooks import getSite
+try:
+    from zope.site.hooks import getSite
+except:
+    from zope.component.hooks import getSite
 
 from Acquisition import aq_get
 from Products.CMFCore.utils import getToolByName

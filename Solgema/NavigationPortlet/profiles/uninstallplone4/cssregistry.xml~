@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<object name="portal_css">
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression="" id="jquery.jscrollpane.css" media="all"
+    rel="stylesheet" rendering="import" insert-after="*"/>
+ <stylesheet title="" cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression="" id="solgemanavigationportlet.css" media="all"
+    rel="stylesheet" rendering="import" insert-after="*"/>
+</object>

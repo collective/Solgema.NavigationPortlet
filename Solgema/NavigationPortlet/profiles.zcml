@@ -1,12 +1,37 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="Solgema.NavigationPortlet">
-
+    
   <genericsetup:registerProfile
     name="default"
     title="Solgema Navigation Portlet"
     directory="profiles/default"
+    description='Adds a navigation portlet with advanced javascript useability.'
+    provides="Products.GenericSetup.interfaces.EXTENSION"
+    />
+
+  <genericsetup:registerProfile
+      name="uninstallplone4"
+      title="Uninstall Solgema Navigation Portlet Uninstall Plone 4 stuff"
+      directory="profiles/uninstallplone4"
+      description="Uninstall Solgema Navigation Portlet Uninstall Plone 4 stuff."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <genericsetup:registerProfile
+    name="plone4"
+    title="Solgema Navigation Portlet (Plone 4)"
+    directory="profiles/plone4"
+    description='Adds a navigation portlet with advanced javascript useability.'
+    provides="Products.GenericSetup.interfaces.EXTENSION"
+    />
+    
+  <genericsetup:registerProfile
+    name="plone5"
+    title="Solgema Navigation Portlet (Plone 5)"
+    directory="profiles/plone5"
     description='Adds a navigation portlet with advanced javascript useability.'
     provides="Products.GenericSetup.interfaces.EXTENSION"
     />
@@ -18,5 +43,17 @@
       description="Uninstall Solgema Navigation Portlet Product."
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
+
+  <genericsetup:upgradeStep
+      title="Upgrade Solgema NavigationPortlet"
+      description="javascript update"
+      source="1.0"
+      destination="1.1"
+      handler=".upgrades.upgrade11"
+      profile="Solgema.NavigationPortlet:default" />
+
+  <subscriber
+      zcml:condition="installed Products.GenericSetup.events"
+      handler=".setuphandlers.handleProfileImportedEvent" />
 
 </configure>

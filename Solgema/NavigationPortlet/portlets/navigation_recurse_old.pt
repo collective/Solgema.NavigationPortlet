@@ -1,0 +1,78 @@
+<tal:master define="level       options/level | python:0;
+                    children    options/children | nothing;
+                    bottomLevel options/bottomLevel | nothing;
+                    firstI      options/firstItem | python:None;
+                    lastI       options/lastItem | python:None;
+                    childs      options/childs | python:None;
+                    include_top options/include_top | python:None;
+                    useDDM      view/canUseContextualMenu;
+                    contentMenuEnabledClass python:useDDM and ' contextualContentMenuEnabled' or '';
+                    contentMenuLinkClass python:useDDM and ' contextualContentMenuLink' or '';"
+  i18n:domain="plone"
+  tal:condition="python:children">
+<metal:main define-macro="nav_main">
+<tal:global define="global num python:0">
+<tal:navitem repeat="node children">
+<tal:number define="global num python:num + 1">
+<li tal:define="show_children   node/show_children;
+                item_id         node/item/id; 
+                children        node/children;
+                item_url        node/getURL;
+                item_icon       nocall:node/item_icon;
+                item_type       node/portal_type;
+                item            node/item;
+                remote_url      node/getRemoteUrl;
+                link_remote     node/link_remote;
+                is_current      node/currentItem;
+                is_in_path      node/currentParent;
+                excluded        node/exclude_from_nav | python:False;
+                is_default_page node/is_default_page | python:False;
+                li_class        python:is_current and ' navTreeCurrentNode' or '';
+                li_extr_class   python:is_in_path and ' navTreeItemInPath' or '';
+                li_folder_class python:show_children and ' navTreeFolderish' or '';
+                li_number       repeat/node/index;
+                li_level        python:level-1;
+                defaultpage     python:is_default_page and ' is_default_page' or '';
+                firstAllItem    python:not include_top and firstI == item_url and ' firstAllItem' or '';
+                lastAllItem     python:lastI == item_url and ' lastAllItem' or '';
+                firstItem       python:repeat['node'].start and ' firstItem' or '';
+                lastItem        python:repeat['node'].end and ' lastItem' or '';
+                is_open         python:is_current and ' navTreeOpen' or is_in_path and ' navTreeOpen' or ' navTreeClosed';
+                navtreepath     string:navtreepath-${node/path};
+                ksslevel        string:navtreelevel-${li_level};
+                excluded_class  python:excluded and ' excluded' or '';
+                normalizeString nocall: context/plone_utils/normalizeString;
+                item_type_class python:'contenttype-' + normalizeString(item_type);"
+    tal:attributes="class string:navTreeItem visualNoMarker${firstItem}${lastItem}${li_extr_class}${li_folder_class}${is_open} liLevel${li_level};"
+    tal:condition="python:bottomLevel &lt;= 0 or level &lt;= bottomLevel">
+
+    <span tal:define="item_class string:state-${node/normalized_review_state}"
+         tal:attributes="class string:outer_section ${li_extr_class}${li_folder_class}${is_open}">
+     
+      <span tal:define="item_class python:is_current and item_class + ' navTreeCurrentItem' or item_class"
+         tal:attributes="class python:'inner_section'+li_class+li_extr_class+li_folder_class+firstAllItem+lastAllItem+' sectionLevel'+str(li_level)+defaultpage+excluded_class+contentMenuEnabledClass">
+
+        <a tal:attributes="href python:link_remote and remote_url or item_url;
+                           title node/Description;
+                           class string:navTreeText $item_class${li_class}${li_extr_class}${li_folder_class}${is_open} ${navtreepath} ${ksslevel}${contentMenuLinkClass}">
+          <span class="container">
+              <img tal:replace="structure item_icon/html_tag"/>
+            <span tal:content="node/Title" tal:attributes="class string:$item_type_class">Selected Item Title</span>
+          </span>
+        </a>
+      </span>
+
+      <ul tal:define="menuclass python:not is_in_path and not is_current and level == 1 and ' navTreeSubmenu smenu' or '';"
+          tal:attributes="class python:'navTree navTreeLevel'+str(level)+menuclass;
+                          id python:not is_in_path and not is_current and level == 1 and item_id+'_smenu' or None;
+                          style python:not is_current and not is_in_path and level == 1 and 'display:none;;' or None;"
+          tal:condition="python: len(children) > 0 and show_children">  
+        <span tal:replace="structure python:view.recurse(children=children, level=level+1, bottomLevel=bottomLevel, firstItem=firstI, lastItem=lastI)" />
+      </ul>
+    </span>
+</li>
+</tal:number>
+</tal:navitem>
+</tal:global>
+</metal:main>
+</tal:master>

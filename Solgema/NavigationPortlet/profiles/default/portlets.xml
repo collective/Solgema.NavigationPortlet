@@ -2,8 +2,8 @@
 <portlets
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
     i18n:domain="Solgema.NavigationPortlet">
-
- <portlet
+  
+ <portlet 
    addview="portlet.SolgemaNavigationPortlet"
    title="Solgema Navigation Portlet"
    description="A portlet which displays an advanced javascript portlet."
@@ -12,5 +12,14 @@
    >
    <for interface="plone.app.portlets.interfaces.IColumn" />
  </portlet>
+     
+ <assignment
+     manager="plone.leftcolumn"
+     category="context"
+     key="/"
+     type="portlet.SolgemaNavigationPortlet"
+     name="solgema_navigation"
+     insert-before="solgema_search"
+     />
 
 </portlets>

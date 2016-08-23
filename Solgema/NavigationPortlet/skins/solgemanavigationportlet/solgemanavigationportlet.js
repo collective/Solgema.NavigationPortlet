@@ -1,8 +1,12 @@
 function initjScrollPane(portlet) {
-    var item = jq(portlet).find('dl.portletNavigationTree dd.portletItem');
+    var item = $(portlet).find('.portletNavigationTree');
+    if (!item.is('section')) {
+        var item = $(portlet).find('.portletNavigationTree .portletItem');
+    }
     item.css({'height': 'auto', 'position':'relative'});
-    var maxHeight = jq(portlet).css('max-height');
-    if (maxHeight) {
+    var maxHeight = $(portlet).css('max-height');
+    console.debug(maxHeight.length);
+    if (maxHeight & maxHeight!='none') {
         var navTreeMaxHeight = maxHeight.replace('px', '');
     } else {
         var navTreeMaxHeight = 600;
@@ -10,40 +14,46 @@ function initjScrollPane(portlet) {
     if ( item.height() > navTreeMaxHeight ) {
         item.css({'height': navTreeMaxHeight+'px', 'position':'relative'});
         item.jScrollPane();
-        var container = jq(portlet).find('.jspContainer');
+        var container = $(portlet).find('.jspContainer');
         container.css('height', navTreeMaxHeight+'px');
-        var current = jq(portlet).find('dl.portletNavigationTree dd.portletItem a.navTreeCurrentNode');
+        var current = $(portlet).find('.portletNavigationTree .portletItem a.navTreeCurrentNode');
         if ( current.length!=0 ) {
-            jq(portlet).find('dl.portletNavigationTree dd.portletItem').data('jsp').scrollToElement(current, true);
+            item.data('jsp').scrollToElement(current, true);
         }
     }
 };
 
 function updateScrollPane() {
-    var portlet = jq(this).parents('.SolgemaNavigationPortlet.useScrollPane');
-    var item = jq(portlet).find('dl.portletNavigationTree dd.portletItem');
+    var portlet = $(this).parents('.SolgemaNavigationPortlet.useScrollPane');
+    var item = $(portlet).find('.portletNavigationTree');
+    if (!item.is('section')) {
+        var item = $(portlet).find('.portletNavigationTree .portletItem');
+    }
     item.css({'height': 'auto', 'position':'relative'});
-    var maxHeight = jq(portlet).css('max-height');
-    if (maxHeight) {
+    var maxHeight = $(portlet).css('max-height');
+    if (maxHeight & maxHeight!='none') {
         var navTreeMaxHeight = maxHeight.replace('px', '');
     } else {
         var navTreeMaxHeight = 600;
     }
     if ( item.height() > navTreeMaxHeight ) item.css({'height': navTreeMaxHeight+'px', 'position':'relative'});
-    var container = jq(portlet).find('.jspContainer');
+    var container = $(portlet).find('.jspContainer');
     if (container.length==0) {
         initjScrollPane(portlet);
-        var jspAPI = jq(portlet).find('dl.portletNavigationTree dd.portletItem').data('jsp');
+        var jspAPI = item.data('jsp');
     } else {
-        var jspAPI = jq(portlet).find('dl.portletNavigationTree dd.portletItem').data('jsp');
+        var jspAPI = item.data('jsp');
         if (jspAPI) jspAPI.reinitialise();
     }
-    if ( item.height() > navTreeMaxHeight ) {
+    console.debug(item);
+    console.debug(item.height());
+    console.debug(navTreeMaxHeight);
+    if ( item.height() >= navTreeMaxHeight ) {
         container.css('height', navTreeMaxHeight+'px');
     } else {
         container.css('height', 'auto');
     }
-    if (jspAPI) jspAPI.scrollToElement(jq(this), true);
+    if (jspAPI) jspAPI.scrollToElement($(this), true);
 };
 
 function toggleNavtree(portlet, link, container) {
@@ -51,7 +61,7 @@ function toggleNavtree(portlet, link, container) {
         container.find('ul:first').slideToggle(400, updateScrollPane);
         container.removeClass('navTreeClosed').addClass('navTreeOpen');
         link.removeClass('navTreeClosed').addClass('navTreeOpen');
-        var item = jq(portlet).find('dl.portletNavigationTree dd.portletItem');
+        var item = $(portlet).find('.portletNavigationTree .portletItem');
     } else {
         container.find('ul:first').slideToggle(400, updateScrollPane);
         container.removeClass('navTreeOpen').addClass('navTreeClosed');
@@ -61,44 +71,58 @@ function toggleNavtree(portlet, link, container) {
 
 function navtreeCollapsible(event) {
     if (event.which = 1) {
-        if ( event.pageX > jq(this).find('span:last').offset().left ) return true;
+        if ( event.pageX > $(this).find('span:last').offset().left ) return true;
         event.preventDefault();
-        var portletWrapper = jq(this).parents('div.portletWrapper:first');
-        var portlet = jq(this).parents('div.SolgemaNavigationPortlet:first');
-        var portletDL = jq(this).parents('dl:first');
+        var portletWrapper = $(this).parents('.portletWrapper:first');
+        var portlet = $(this).parents('.SolgemaNavigationPortlet:first');
+        var portletDL = $(this).parents('section:first');
+        if (typeof portletDL === undefined) {
+            var portletDL = $(this).parents('dl:first');
+        }
         var classes = portletWrapper.attr('class').split(' ');
         for (i = 0; i < classes.length; i++) {
             if ( classes[i].match('kssattr-portlethash-') ) var navTreeHash = classes[i].replace('kssattr-portlethash-', '');
         }
-        var link = jq(this);
-        var container = jq(this).parents('li.navTreeFolderish:first');
+        if (portletWrapper.attr('data-portlethash')!== undefined) {
+            var navTreeHash = portletWrapper.attr('data-portlethash');
+        }
+        var link = $(this);
+        var container = $(this).parents('li.navTreeFolderish:first');
         if (container.length==0) return true;
-        var innercontainer = jq(this).parents('.outer_section:first');
+        var innercontainer = $(this).parents('.outer_section:first');
+        if (innercontainer.length==0) var innercontainer = container;
         var content = innercontainer.children('ul.navTree:first');
         if (content.length==0) {
-            jq('#kss-spinner').show();
-            var classes = jq(this).attr('class').split(' ');
+            $('#kss-spinner').show();
+            $('.plone-loader').show();
+            var classes = $(this).attr('class').split(' ');
             for (i = 0; i < classes.length; i++) {
                 if ( classes[i].match('navtreepath-') ) var navTreePath = classes[i].replace('navtreepath-', '');
                 if ( classes[i].match('navtreelevel-') ) var navTreeLevel = classes[i].replace('navtreelevel-', '');
             }
-
-            jq.get("@@navTreeItem", { portlethash: navTreeHash, navtreepath: navTreePath, navtreelevel: navTreeLevel },
+            if (typeof portal_url == 'undefined') {
+                portal_url = $('body').attr('data-portal-url');
+            }
+            $.get(portal_url+"/@@navTreeItem", { portlethash: navTreeHash, navtreepath: navTreePath, navtreelevel: navTreeLevel },
                 function (data) {
                     if (data) {
-                        innercontainer.append(data);
+                        var d = document.createElement('div');
+                        $(d).html(data);
+                        var final = $(d).find('ul').detach();
+                        innercontainer.append(final);
                         innercontainer.find('a.navTreeText').unbind('click');
-                        if (jq(portletDL).hasClass('dropDownEnabled')) {
+                        if ($(portletDL).hasClass('contextMenuEnabled')) {
                             try {
                                 innercontainer.find('a.navTreeText').bind("contextmenu", openContextualContentMenu);
                             } catch(err) {}
                         }
                         innercontainer.find('a.navTreeText').click(navtreeCollapsible).end().each(function() {
-                            var container = jq(this).parents('li.navTreeFolderish:first');
+                            var container = $(this).parents('li.navTreeFolderish:first');
                             var state = container.hasClass('navTreeClosed') ? 'collapsed' : 'expanded';
                             if (state =='collapsed') container.find('ul').css('display','none');
                             toggleNavtree(portlet, link, container);
-                            jq('#kss-spinner').css('display','none');
+                            $('#kss-spinner').css('display','none');
+                            $('.plone-loader').hide();
                         });
                     } else {
                         if (container.hasClass('navTreeClosed')) {
@@ -108,7 +132,8 @@ function navtreeCollapsible(event) {
                             container.removeClass('navTreeOpen').addClass('navTreeClosed');
                             link.removeClass('navTreeOpen').addClass('navTreeClosed');
                         }
-                    jq('#kss-spinner').css('display','none');
+                    $('#kss-spinner').css('display','none');
+                    $('.plone-loader').hide();
                     }
                 }
             );
@@ -117,17 +142,17 @@ function navtreeCollapsible(event) {
         }
     } else if (event.which = 3) {
         return false;
-        jq('a.navTreeText').removeClass('selected');
-        jq(this).addClass('selected');
+        $('a.navTreeText').removeClass('selected');
+        $(this).addClass('selected');
     }
 };
 
 function activateNavtreeCollapsibles() {
-    var portlet = jq('.SolgemaNavigationPortlet.useScrollPane');
+    var portlet = $('.SolgemaNavigationPortlet.useScrollPane');
     initjScrollPane(portlet);
-    jq('.SolgemaNavigationPortlet.useScrollPane dl.portletNavigationTree').addClass('javaNavTree');
-    jq('.SolgemaNavigationPortlet.useScrollPane li.navTreeFolderish').find('a.navTreeText:first').click(navtreeCollapsible).end().each(function() {
-        var container = jq(this).parents('li.navTreeFolderish:first');
+    $('.SolgemaNavigationPortlet.useScrollPane .portletNavigationTree').addClass('javaNavTree');
+    $('.SolgemaNavigationPortlet.useScrollPane li.navTreeFolderish').find('a.navTreeText:first').click(navtreeCollapsible).end().each(function() {
+        var container = $(this).parents('li.navTreeFolderish:first');
         var state = container.hasClass('navTreeClosed') ?
                      'collapsed' : 'expanded';
         if (state =='collapsed') container.find('ul').css('display','none');
@@ -135,5 +160,5 @@ function activateNavtreeCollapsibles() {
     });
 };
 
-jq(activateNavtreeCollapsibles);
+$(activateNavtreeCollapsibles);
 
