@@ -5,7 +5,6 @@ function initjScrollPane(portlet) {
     }
     item.css({'height': 'auto', 'position':'relative'});
     var maxHeight = $(portlet).css('max-height');
-    console.debug(maxHeight.length);
     if (maxHeight & maxHeight!='none') {
         var navTreeMaxHeight = maxHeight.replace('px', '');
     } else {

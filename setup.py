@@ -27,6 +27,7 @@ setup(name='Solgema.NavigationPortlet',
       install_requires=[
           'setuptools',
           'Solgema.ContextualContentMenu',
+          'plone.app.form'
           # -*- Extra requirements: -*-
       ],
       entry_points="""
